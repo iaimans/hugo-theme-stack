@@ -10,9 +10,10 @@
 
 {{- if $image -}}
 	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
+	{{- $notGIF := ne (path.Ext .Destination) ".gif" -}}
 	{{- $Permalink = $image.RelPermalink -}}
 
-	{{- if $notSVG -}}
+	{{- if and ($notSVG) ($notGIF) -}}
 		{{- $Width = $image.Width -}}
 		{{- $Height = $image.Height -}}
 		{{- $galleryImage = true -}}
